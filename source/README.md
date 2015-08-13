@@ -1,0 +1,2 @@
+# tryndamere.github.io
+blog
