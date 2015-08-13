@@ -1,0 +1,14 @@
+<section>
+  <h3>Categories</h3>
+<% if (site.categories && site.categories.length){ %>
+  <%
+  var cats = [];
+    site.categories.forEach(function(cat){
+    cats.push('<li><a class="post-list-item" href="' + config.root + cat.path + '">' + cat.name + '</a> (' +cat.length+ ')</li>');
+  });
+  %>
+  <ul class="post-list">
+    <%- cats.join(' ') %>
+  </ul>
+<% } %>
+</section>

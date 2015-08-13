@@ -1,0 +1,36 @@
+<div class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><%= config.title%> <span class="navbar-brand-sub"><%= config.subtitle%></span></a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <form id="search-form" class="form-group navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" name="q" value="" id="query" class="form-control" placeholder="搜索" required="" autocomplete="off">
+          <input type="submit" class="btn btn-default" value=" Go">
+        </div>
+      </form>
+      <ul class="nav navbar-nav">
+        <% for (var i in theme.menu){ %>
+        <li>
+          <a href="<%- theme.menu[i] %>" title="<%= i %>" <% if(i=='Github'){%> target="_blank" <%}%>>
+            <% if( i == 'Archives') {%><span class="fa fa-archive fa-2x"></span><%}%>
+            <% if( i == 'Categories') {%><span class="fa fa-navicon fa-2x"></span><%}%>
+            <% if( i == 'Tags') {%><span class="fa fa-tags fa-2x"></span><%}%>
+            <% if( i == 'About') {%><span class="fa fa-user fa-2x"></span><%}%>
+            <% if( i == 'Github') {%><span class="fa fa-github fa-2x"></span><%}%>
+          </a>
+        </li>
+        <% } %>
+        <li><a href="/rss.xml" target="_blank" title="RSS"><span class="fa fa-rss fa-2x"></span></a></li>
+      </ul>
+    </div>
+
+  </div><!--/.nav-collapse -->
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <% if(page.path == 'about/index.html') {%>
+    <div class="content">
+        <div class="col-md-12 page">
+            <div class="page-header">
+                <h1> <%=item.title%> </h1>
+            </div>
+            <div id="post-text">
+                <%- item.content %>
+            </div>
+        </div>
+    </div>
+    <% } else {%>
+    <div class="content">
+        <ul class="pager hidden-print">
+            <li class="previous <% if(!item.prev){%>disabled<%}%>">
+                <% if( item.prev != undefined ) { %>
+                <a href="<%- config.root %><%- item.prev.path %>"><i
+                            class="fa fa-angle-double-left"></i>&nbsp;<%= item.prev.title %></a>
+                <% } else { %>
+                <a href="javascript:void(0)"><i class="fa fa-angle-double-left"></i>&nbsp;无内容</a>
+                <% } %>
+            </li>
+            <li class="next <% if(!item.next){%>disabled<%}%>">
+                <% if( item.next != undefined ) { %>
+                <a href="<%- config.root %><%- item.next.path %>"><%= item.next.title %>&nbsp;<i
+                            class="fa fa-angle-double-right"></i></a>
+                <% } else { %>
+                <a href="javascript:void(0)" >无内容&nbsp;<i class="fa fa-angle-double-right"></i></a>
+                <% } %>
+            </li>
+        </ul>
+        <div id="post">
+            <div class="page-header text-center">
+                <h1><%= item.title %></h1>
+
+                <p class="text-muted clearfix">
+        <span class="pull-right">
+          <%= item.date.format(config.date_format) %>
+        </span>
+                </p>
+            </div>
+            <div id="post-text">
+                <%- item.content %>
+            </div>
+            <br>
+
+            <div>
+                <p class="text-success hidden-print">
+                    <i class="fa fa-external-link"></i>
+                    <a href="<%- item.path %>"><%= item.title %></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-print">
+        <div class="ds-thread" data-thread-key="<%- item.path %>" data-title="<%- item.title %>"></div>
+        <script type="text/javascript">
+            var duoshuoQuery = {short_name: "xiangzi"};
+            (function () {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';
+                ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0]
+                || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+        </script>
+    </div>
+    <%}%>
+</div>

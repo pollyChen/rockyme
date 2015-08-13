@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-md-12 page">
+        <%
+            var archiveYear = '';
+            var postCount = page.posts.length;
+            page.posts.each(function(item , i){
+                if ( i == 0 ) {
+        %>
+        <div class="page-header">
+            <% if (!is_category()) {%>
+            <h1> Archives </h1>
+            <% } else {%>
+            <h1><%=page.category%></h1>
+            <%}%>
+        </div>
+        <%
+
+                }
+                var tmpDate = item.date.format("YYYY");
+                if( archiveYear == '') {
+                    archiveYear = tmpDate;
+        %>
+                <h4>Year <%=archiveYear %></h4>
+                <ul>
+            <%}%>
+            <% if( archiveYear != tmpDate ) {%>
+                <% archiveYear = tmpDate;%>
+                <h4>Year <%=archiveYear %></h4>
+                </ul>
+                <% if( i != postCount ) { %>
+                    <ul>
+                <%}%>
+            <%}%>
+            <li>
+                <span><%= item.date.format(config.date_format)%></span> »
+                <a href="<%- config.root%><%- item.path%>"><%= item.title%></a>
+            </li>
+            <% if(i == postCount) {%>
+                </ul>
+            <%}%>
+        <% }); %>
+    </div>
+</div>

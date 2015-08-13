@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col-md-9">
+    <% page.posts.each(function(item){ %>
+      <div id="index-post">
+        <h4>
+          <a href="<%- config.root %><%- item.path %>">
+            <strong><%= item.title%></strong>
+          </a>
+          <small><%=item.date.format(config.date_format)%></small>
+        </h4>
+        <div id="index-post-text">
+          <%= item.desc %>
+        </div>
+      </div>
+    <% }); %>
+    <%- partial('_partial/pagination') %>
+  </div>
+  <div class="col-md-3 visible-lg visible-md">
+    <%- partial('post/about') %>
+    <%- partial('post/category') %>
+    <%- partial('post/posts') %>
+  </div>
+</div>
